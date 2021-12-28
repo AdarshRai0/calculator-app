@@ -1,37 +1,116 @@
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
-
+:root {
+  --mainbgcolor: hsl(222, 26%, 31%);
+  --mainbg1color: hsl(0, 0%, 90%);
+  --mainbg2color: hsl(268, 75%, 9%);
+  --tbgkbgsbg: hsl(268, 71%, 12%);
+}
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: "Spartan", sans-serif;
+  font-weight: 700;
 }
 body {
   width: 100%;
   max-width: 1440px;
-  background-color: hsl(222, 26%, 31%);
+  background-color: var(--mainbgcolor);
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
+body.active1 {
+  background-color: var(--mainbg1color);
+  color: hsl(60, 10%, 19%);
+}
+body.active1 .btn {
+  background-color: hsl(0, 5%, 81%);
+}
+body.active2 {
+  background-color: var(--mainbg2color);
+}
 .toggle {
   display: flex;
+  justify-content: space-between;
+}
+.right {
+  display: flex;
   justify-content: flex-end;
+  margin-top: 20px;
+  font-weight: lighter;
+  font-size: 15px;
+  cursor: pointer;
 }
 .toggle p {
   margin: 0 5px;
   color: #fff;
 }
-
-h3 {
+body.active1 .toggle h1 {
+  color: #111;
+}
+body.active2 .toggle h1 {
+  color: hsl(52, 100%, 62%);
+}
+h1 {
   color: #fff;
 }
+.control {
+  display: flex;
+  justify-content: flex-end;
+}
+.control .box {
+  width: 60px;
+  height: 15px;
+  background-color: hsl(224, 36%, 15%);
+  border-radius: 30px;
+  margin-left: 10px;
+  position: relative;
+}
+body.active1 .control .box {
+  background-color: hsl(0, 5%, 81%);
+
+  color: #111;
+}
+.control #circle {
+  margin: 1px 2px;
+
+  /* padding: 5px 0; */
+  width: 14px;
+  height: 13px;
+  background-color: hsl(6, 63%, 50%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  border-radius: 100px;
+}
+body.active1 .control #circle {
+  background-color: hsl(25, 98%, 40%);
+}
+body.active2 .control #circle {
+  background-color: hsl(176, 100%, 44%);
+}
 .control p {
-  float: right;
-  margin-right: 70px;
+  cursor: pointer;
+  margin-top: 2px;
   color: #fff;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+body.active1 .right p {
+  color: #111;
+}
+body.active1 .control p {
+  color: #111;
+}
+body.active2 .right p {
+  color: hsl(52, 100%, 62%);
+}
+body.active2 .control p {
+  color: hsl(52, 100%, 62%);
 }
 .screen {
   width: 450px;
@@ -40,6 +119,21 @@ h3 {
   width: 100%;
   height: 100px;
   margin: 10px 0;
+  text-align: right;
+  font-size: 32px;
+  background-color: hsl(224, 36%, 15%);
+  color: #fff;
+  border: 0;
+  outline: none;
+  border-radius: 7px;
+}
+body.active1 #screen {
+  background-color: hsl(0, 0%, 93%);
+  color: #111;
+}
+body.active2 #screen {
+  background-color: var(--tbgkbgsbg);
+  color: hsl(52, 100%, 62%);
 }
 button {
   width: 90px;
@@ -48,9 +142,18 @@ button {
   cursor: pointer;
   border: 0;
   border-radius: 5px;
-  box-shadow: 0px 5px 0px 0px hsl(28, 16%, 65%);
+  box-shadow: 0px 3px 0px 0px hsl(28, 16%, 65%);
   margin: 10px 10px;
-  font-size: 19px;
+  font-size: 32px;
+  cursor: pointer;
+}
+body.active1 button {
+  box-shadow: 0px 3px 0px 0px hsl(35, 11%, 61%);
+}
+body.active2 button {
+  color: hsl(52, 100%, 62%);
+  background-color: hsl(268, 47%, 21%);
+  box-shadow: 0px 3px 0px 0px hsl(290, 70%, 36%);
 }
 .btn {
   display: flex;
@@ -59,32 +162,103 @@ button {
   background-color: hsl(224, 36%, 15%);
   padding: 10px 5px;
   margin: 8px 0;
+  border-radius: 7px;
 }
-.reset {
+body.active2 .btn {
+  background-color: var(--tbgkbgsbg);
+}
+.reset,
+.del {
   background-color: hsl(225, 28%, 49%);
   box-shadow: 0px 3px 0px 0px hsl(224, 28%, 35%);
+  color: #fff;
+  font-size: 16px;
+}
+body.active1 .reset,
+body.active1 .del {
+  background-color: hsl(185, 42%, 37%);
+  box-shadow: 0px 3px 0px 0px hsl(35, 11%, 61%);
+}
+body.active2 .reset,
+body.active2 .del {
+  background-color: hsl(281, 89%, 26%);
+  box-shadow: 0px 3px 0px 0px hsl(285, 91%, 52%);
+
+  color: #fff;
 }
 .equal {
   background-color: hsl(6, 63%, 50%);
   box-shadow: 0px 3px 0px 0px hsl(6, 70%, 34%);
 }
-.del {
-  background-color: hsl(225, 28%, 49%);
-  box-shadow: 0px 3px 0px 0px hsl(224, 28%, 35%);
-  color: #fff;
+body.active1 .equal {
+  box-shadow: 0px 3px 0px 0px hsl(25, 99%, 27%);
+  background-color: hsl(25, 98%, 40%);
 }
+body.active2 .equal {
+  box-shadow: 0px 3px 0px 0px hsl(177, 92%, 70%);
+  background-color: hsl(176, 100%, 44%);
+  color: #111;
+  /* font-size: 25px; */
+}
+
 .reset,
 .equal {
   width: 200px;
   color: #fff;
+  font-size: 16px;
 }
-.container {
+.num {
+  font-size: 32px;
 }
 
 .attribution {
   font-size: 11px;
   text-align: center;
 }
+body.active2 .attribution {
+  font-size: 11px;
+  text-align: center;
+  color: #fff;
+}
+body.active2 .attribution a {
+  color: rgb(0, 247, 255);
+}
 .attribution a {
-  color: hsl(228, 45%, 44%);
+  color: #fff;
+}
+body.active1 .attribution a {
+  color: rgb(0, 0, 0);
+}
+@media (max-width: 580px) {
+  body {
+    max-width: 580px;
+  }
+  .screen {
+    width: 330px;
+  }
+  button {
+    width: 70px;
+    padding: 10px;
+    font-size: 22px;
+
+    margin: 5px 5px;
+  }
+  .btn {
+    display: flex;
+    width: 330px;
+    flex-flow: wrap;
+    background-color: hsl(224, 36%, 15%);
+    padding: 5px 5px;
+    margin: 8px 0;
+    border-radius: 7px;
+  }
+  .reset,
+  .equal {
+    width: 150px;
+    color: #fff;
+    font-size: 16px;
+  }
+  .num {
+    font-size: 22px;
+  }
 }
